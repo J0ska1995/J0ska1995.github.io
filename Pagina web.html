@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview de Imágenes</title>
+    <style>
+        /* Estilo inicial */
+        .image-container {
+            width: 500px;
+            height: 400px;
+            border: none;
+            margin-bottom: 1px;
+            display: inline-block;
+            margin-right: 2px;
+            overflow: hidden; /* Para ocultar partes de la imagen más grande */
+        }
+
+        #imagePreview {
+            width: 850px;
+            height: 700px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            display: none; /* Inicialmente oculto */
+        }
+
+        #imagePreview img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Primera imagen -->
+    <div class="image-container" onmouseover="mostrarPreview(this)" onmouseout="deshacer()" data-url="https://media.istockphoto.com/id/1306641965/es/foto/cachorro-cobberdog-sobre-fondo-blanco.jpg?s=612x612&w=0&k=20&c=ifCUcCbMuEYHgBaNq2KI9XnWCJMAWn27H2FUlsJHipg=">
+        <img src="https://media.istockphoto.com/id/1306641965/es/foto/cachorro-cobberdog-sobre-fondo-blanco.jpg?s=612x612&w=0&k=20&c=ifCUcCbMuEYHgBaNq2KI9XnWCJMAWn27H2FUlsJHipg=" alt="Vista Previa de Imagen 1">
+    </div>
+
+    <!-- Segunda imagen -->
+    <div class="image-container" onmouseover="mostrarPreview(this)" onmouseout="deshacer()" data-url="https://img.freepik.com/fotos-premium/imagenes-animadas-gatos-tamano-hd_959624-4180.jpg">
+        <img src="https://img.freepik.com/fotos-premium/imagenes-animadas-gatos-tamano-hd_959624-4180.jpg" alt="Vista Previa de Imagen 2">
+    </div>
+
+    <div id="imagePreview">
+        <!-- Imagen de vista previa -->
+        <img src="" alt="Vista Previa de Imagen">
+    </div>
+
+    <script>
+        function mostrarPreview(previewPic) {
+            // Obtener la URL de la imagen de fondo del atributo data-url
+            var backgroundImage = previewPic.getAttribute('data-url');
+
+            // Establecer la fuente de la imagen en el elemento con id "imagePreview"
+            document.getElementById('imagePreview').style.display = 'inline-block';
+            document.getElementById('imagePreview').innerHTML = '<img src="' + backgroundImage + '" alt="Vista Previa de Imagen">';
+        }
+
+        function deshacer() {
+            // Ocultar el div con id "imagePreview"
+            document.getElementById('imagePreview').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
